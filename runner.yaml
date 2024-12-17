@@ -1,10 +1,12 @@
-inputs:
+runner:
+  name: IP Geolocation Finder
+  description: A Python tool that validates IP addresses against allow/deny lists and provides detailed geolocation information using MaxMind's GeoLite2 databases. The tool can identify cloud provider IPs and displays country, city, coordinates, and ISP information for any given IP address.
+  version: 0.0.2
+
+webform:
   - name: ip_address
     prompt: ip_address
     type: text
 
 launch:
-  program: app.py
-  args:
-    - '--ip_address'
-    - '${ip_address}'
+  command: app.py --ip_address ${ip_address}
