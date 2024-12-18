@@ -24,7 +24,7 @@ def get_ip_geolocation(ip_address: str) -> dict:
     
     # Separate try blocks for better error handling
     try:
-        with geoip2.database.Reader('databases/GeoLite2-City.mmdb') as city_reader:
+        with geoip2.database.Reader('GeoLite2-City.mmdb') as city_reader:
             city_response = city_reader.city(ip_address)
             result.update({
                 'country_name': city_response.country.name or 'Unknown',  # Handle None values
@@ -39,7 +39,7 @@ def get_ip_geolocation(ip_address: str) -> dict:
         print(f"[!] IP address {ip_address} not found in the City database")
     
     try:
-        with geoip2.database.Reader('databases/GeoLite2-ASN.mmdb') as asn_reader:
+        with geoip2.database.Reader('GeoLite2-ASN.mmdb') as asn_reader:
             asn_response = asn_reader.asn(ip_address)
             result['isp'] = asn_response.autonomous_system_organization or 'Unknown'
     except FileNotFoundError:
