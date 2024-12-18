@@ -3,6 +3,12 @@ runner:
   description: A Python tool that validates IP addresses against allow/deny lists and provides detailed geolocation information using MaxMind's GeoLite2 databases. The tool can identify cloud provider IPs and displays country, city, coordinates, and ISP information for any given IP address.
   version: 0.0.2
 
+build:
+  commands: |
+    echo "START: Building the runner"
+    python3 -m pip install -U -r app/runner/requirements.txt
+    echo "END: Building the runner"
+
 webform:
   - name: ip_address
     prompt: ip_address
